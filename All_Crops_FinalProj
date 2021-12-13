@@ -1,2 +1,39 @@
 # add data
-All_Crops_FinalProj.csv 
+#All_Crops_FinalProj.csv 
+# imports the necessary modules
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy
+import seaborn
+import datetime
+
+
+# loads the dataset
+HICrops = pd.read_csv('../input/hicrops8909/Hawaii_Crops89to09.csv', parse_dates=True)
+
+#increasing size after making ticks every year
+fig = plt.figure(figsize=(14,5))
+#(this did not appear to help/changed back: HICrops['date_parsed']= pd.to_datetime(HICrops['Year'], infer_datetime_format=True)
+# title
+plt.title('Value of All Crops in Hawaii 1989-2009', fontsize = 20)
+
+# x and y axis labels
+plt.xlabel('Year')
+plt.ylabel('Value of All Crops, livestock and aquaculture, in Hundred Million of Dollars')
+
+#set x axis ticks
+plt.xticks([1989,1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008])
+# plot
+plt.plot(HICrops["Year"], HICrops["All crops*, livestock, and aquaculture"])
+
+# Use automatic StrMethodFormatter (didn't work)
+#ax.yaxis.set_major_formatter('${x:1.2f}')
+
+#try to fix y axis (didnt work)
+#ax.set(ylim=(500000000, 750000000)
+
+# saves the image
+#plt.savefig("linechart.png")
+
+# shows the image
+plt.show()
